@@ -6,6 +6,10 @@ import (
 	"github.com/open-policy-agent/opa/ast"
 )
 
+// Simple routine check to see that things are working as expected.
+// While it would be good to add tests for the encoding of each AST node individually, this is thoroughly tested
+// via Regal as it consumes the Roast format extensively.
+
 func TestJsonLocationEncoding(t *testing.T) {
 	t.Parallel()
 
