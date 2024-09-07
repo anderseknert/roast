@@ -207,3 +207,10 @@ location of any given node. Rather than base64-encoding the the bytes of the tex
 count the number of newlines in the text, and from that plus the number of bytes on the last line (if more than one)
 determine the end location. It would then be assumed that the client has the means to translate that into the
 equivalence of `text` where necessary. Regal could for example easily do this from `input.regal.file.lines`.
+
+### Remove `name` attribute from rule heads
+
+The `name` attribute that "traditional" rules have is just duplicating information from the rule head's
+`ref`. While this doesn't come with any real cost in terms of AST size or performance, we've already had cases in
+Regal where some linters referred to the `name` of a rule, only to find out the hard way that it isn't always there.
+In order to avoid that, we should remove `name` from rule heads, and ensure that `ref` is always present.
