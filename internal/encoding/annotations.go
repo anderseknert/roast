@@ -113,9 +113,17 @@ func (*annotationsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 		stream.WriteObjectField("custom")
 		stream.WriteObjectStart()
 
+		i := 0
+
 		for key, value := range a.Custom {
+			if i > 0 {
+				stream.WriteMore()
+			}
+
 			stream.WriteObjectField(key)
 			stream.WriteVal(value)
+
+			i++
 		}
 
 		stream.WriteObjectEnd()
