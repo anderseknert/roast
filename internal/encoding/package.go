@@ -31,5 +31,11 @@ func (*packageCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 		stream.WriteVal(pkg.Path)
 	}
 
+	if stream.Attachment != nil {
+		stream.WriteMore()
+		stream.WriteObjectField("annotations")
+		stream.WriteVal(stream.Attachment)
+	}
+
 	stream.WriteObjectEnd()
 }

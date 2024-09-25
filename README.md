@@ -176,6 +176,12 @@ The optimized Rego AST format discards generated bodies entirely, and the same r
 Note that this applies equally to empty `else` bodies, which are represented the same way in the original AST, and
 omitted entirely in the optimized format.
 
+### Removed `annotations` attribute from module
+
+OPA already attaches `annotations` to rules. With the Roast format attaching `package` and `subpackages` scoped
+`annotations` to the `package` as well, there is no need to store `annotations` at the module level. Having this
+removed can save a considerable amount of space in well-documented policies, as they should be!
+
 ### Removed `index` attribute from body expressions
 
 In the original AST, each expression in a body carries a numeric `index` attribute. While this doesn't take much space,
