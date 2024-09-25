@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0] - 2024-09-25
+
+### Changed
+
+- Removed `annotations` from module, in favor of annotations on `package` and `rules`
+
 ## [0.2.0] - 2024-09-09
 
 ### Changed
