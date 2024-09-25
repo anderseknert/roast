@@ -21,8 +21,14 @@ func (*moduleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 
 	if mod.Package != nil {
 		stream.WriteObjectField("package")
+
+		if len(mod.Annotations) > 0 {
+			stream.Attachment = mod.Annotations
+		}
+
 		stream.WriteVal(mod.Package)
 
+		stream.Attachment = nil
 		hasWritten = true
 	}
 
@@ -40,27 +46,6 @@ func (*moduleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			}
 
 			stream.WriteVal(imp)
-		}
-
-		stream.WriteArrayEnd()
-
-		hasWritten = true
-	}
-
-	if len(mod.Annotations) > 0 {
-		if hasWritten {
-			stream.WriteMore()
-		}
-
-		stream.WriteObjectField("annotations")
-		stream.WriteArrayStart()
-
-		for i, ann := range mod.Annotations {
-			if i > 0 {
-				stream.WriteMore()
-			}
-
-			stream.WriteVal(ann)
 		}
 
 		stream.WriteArrayEnd()
