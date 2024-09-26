@@ -77,17 +77,6 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			hasWrittenHead = true
 		}
 
-		if rule.Head.Name != "" {
-			if hasWrittenHead {
-				stream.WriteMore()
-			}
-
-			stream.WriteObjectField("name")
-			stream.WriteVal(rule.Head.Name)
-
-			hasWrittenHead = true
-		}
-
 		if rule.Head.Reference != nil {
 			if hasWrittenHead {
 				stream.WriteMore()
