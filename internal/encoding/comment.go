@@ -19,12 +19,12 @@ func (*commentCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if comment.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(comment.Location)
 		stream.WriteMore()
 	}
 
-	stream.WriteObjectField("text")
+	stream.WriteObjectField(strText)
 	stream.WriteString(base64.StdEncoding.EncodeToString(comment.Text))
 
 	stream.WriteObjectEnd()

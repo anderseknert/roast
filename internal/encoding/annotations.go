@@ -18,35 +18,35 @@ func (*annotationsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if a.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(a.Location)
 		stream.WriteMore()
 	}
 
-	stream.WriteObjectField("scope")
+	stream.WriteObjectField(strScope)
 	stream.WriteString(a.Scope)
 
 	if a.Title != "" {
 		stream.WriteMore()
-		stream.WriteObjectField("title")
+		stream.WriteObjectField(strTitle)
 		stream.WriteString(a.Title)
 	}
 
 	if a.Description != "" {
 		stream.WriteMore()
-		stream.WriteObjectField("description")
+		stream.WriteObjectField(strDescription)
 		stream.WriteString(a.Description)
 	}
 
 	if a.Entrypoint {
 		stream.WriteMore()
-		stream.WriteObjectField("entrypoint")
+		stream.WriteObjectField(strEntrypoint)
 		stream.WriteBool(a.Entrypoint)
 	}
 
 	if len(a.Organizations) > 0 {
 		stream.WriteMore()
-		stream.WriteObjectField("organizations")
+		stream.WriteObjectField(strOrganizations)
 		stream.WriteArrayStart()
 
 		for i, org := range a.Organizations {
@@ -62,7 +62,7 @@ func (*annotationsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 
 	if len(a.RelatedResources) > 0 {
 		stream.WriteMore()
-		stream.WriteObjectField("related_resources")
+		stream.WriteObjectField(strRelatedResources)
 		stream.WriteArrayStart()
 
 		for i, res := range a.RelatedResources {
@@ -78,7 +78,7 @@ func (*annotationsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 
 	if len(a.Authors) > 0 {
 		stream.WriteMore()
-		stream.WriteObjectField("authors")
+		stream.WriteObjectField(strAuthors)
 		stream.WriteArrayStart()
 
 		for i, author := range a.Authors {
@@ -94,7 +94,7 @@ func (*annotationsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 
 	if len(a.Schemas) > 0 {
 		stream.WriteMore()
-		stream.WriteObjectField("schemas")
+		stream.WriteObjectField(strSchemas)
 		stream.WriteArrayStart()
 
 		for i, schema := range a.Schemas {
@@ -110,7 +110,7 @@ func (*annotationsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 
 	if len(a.Custom) > 0 {
 		stream.WriteMore()
-		stream.WriteObjectField("custom")
+		stream.WriteObjectField(strCustom)
 		stream.WriteObjectStart()
 
 		i := 0

@@ -18,15 +18,15 @@ func (*withCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if with.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(with.Location)
 		stream.WriteMore()
 	}
 
-	stream.WriteObjectField("target")
+	stream.WriteObjectField(strTarget)
 	stream.WriteVal(with.Target)
 	stream.WriteMore()
-	stream.WriteObjectField("value")
+	stream.WriteObjectField(strValue)
 	stream.WriteVal(with.Value)
 
 	stream.WriteObjectEnd()

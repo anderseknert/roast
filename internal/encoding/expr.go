@@ -20,7 +20,7 @@ func (*exprCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	hasWritten := false
 
 	if expr.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(expr.Location)
 
 		hasWritten = true
@@ -31,7 +31,7 @@ func (*exprCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("negated")
+		stream.WriteObjectField(strNegated)
 		stream.WriteBool(expr.Negated)
 
 		hasWritten = true
@@ -42,7 +42,7 @@ func (*exprCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("generated")
+		stream.WriteObjectField(strGenerated)
 		stream.WriteBool(expr.Generated)
 
 		hasWritten = true
@@ -53,7 +53,7 @@ func (*exprCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("with")
+		stream.WriteObjectField(strWith)
 		stream.WriteArrayStart()
 
 		for i, with := range expr.With {
@@ -74,7 +74,7 @@ func (*exprCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("terms")
+		stream.WriteObjectField(strTerms)
 
 		switch t := expr.Terms.(type) {
 		case *ast.Term:

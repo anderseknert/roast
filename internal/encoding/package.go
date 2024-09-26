@@ -18,7 +18,7 @@ func (*packageCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if pkg.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(pkg.Location)
 	}
 
@@ -27,13 +27,13 @@ func (*packageCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("path")
+		stream.WriteObjectField(strPath)
 		stream.WriteVal(pkg.Path)
 	}
 
 	if stream.Attachment != nil {
 		stream.WriteMore()
-		stream.WriteObjectField("annotations")
+		stream.WriteObjectField(strAnnotations)
 		stream.WriteVal(stream.Attachment)
 	}
 
