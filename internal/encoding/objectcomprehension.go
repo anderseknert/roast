@@ -17,13 +17,13 @@ func (*objectComprehensionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Str
 
 	stream.WriteObjectStart()
 
-	stream.WriteObjectField("key")
+	stream.WriteObjectField(strKey)
 	stream.WriteVal(oc.Key)
 	stream.WriteMore()
-	stream.WriteObjectField("value")
+	stream.WriteObjectField(strValue)
 	stream.WriteVal(oc.Value)
 	stream.WriteMore()
-	stream.WriteObjectField("body")
+	stream.WriteObjectField(strBody)
 	stream.WriteVal(oc.Body)
 
 	stream.WriteObjectEnd()

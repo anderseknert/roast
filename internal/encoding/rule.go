@@ -22,7 +22,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	hasWritten := false
 
 	if rule.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(rule.Location)
 
 		hasWritten = true
@@ -33,7 +33,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("annotations")
+		stream.WriteObjectField(strAnnotations)
 		stream.WriteArrayStart()
 
 		for i, ann := range rule.Annotations {
@@ -54,7 +54,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("default")
+		stream.WriteObjectField(strDefault)
 		stream.WriteBool(rule.Default)
 
 		hasWritten = true
@@ -65,13 +65,13 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("head")
+		stream.WriteObjectField(strHead)
 		stream.WriteObjectStart()
 
 		hasWrittenHead := false
 
 		if rule.Head.Location != nil {
-			stream.WriteObjectField("location")
+			stream.WriteObjectField(strLocation)
 			stream.WriteVal(rule.Head.Location)
 
 			hasWrittenHead = true
@@ -93,7 +93,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 				stream.WriteMore()
 			}
 
-			stream.WriteObjectField("ref")
+			stream.WriteObjectField(strRef)
 			stream.WriteVal(rule.Head.Reference)
 
 			hasWrittenHead = true
@@ -104,7 +104,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 				stream.WriteMore()
 			}
 
-			stream.WriteObjectField("args")
+			stream.WriteObjectField(strArgs)
 			writeTermsArray(stream, rule.Head.Args)
 
 			hasWrittenHead = true
@@ -115,7 +115,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 				stream.WriteMore()
 			}
 
-			stream.WriteObjectField("assign")
+			stream.WriteObjectField(strAssign)
 			stream.WriteBool(rule.Head.Assign)
 
 			hasWrittenHead = true
@@ -126,7 +126,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 				stream.WriteMore()
 			}
 
-			stream.WriteObjectField("key")
+			stream.WriteObjectField(strKey)
 			stream.WriteVal(rule.Head.Key)
 
 			hasWrittenHead = true
@@ -137,7 +137,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 				stream.WriteMore()
 			}
 
-			stream.WriteObjectField("value")
+			stream.WriteObjectField(strValue)
 			stream.WriteVal(rule.Head.Value)
 		}
 
@@ -151,13 +151,13 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("body")
+		stream.WriteObjectField(strBody)
 		stream.WriteVal(rule.Body)
 	}
 
 	if rule.Else != nil {
 		stream.WriteMore()
-		stream.WriteObjectField("else")
+		stream.WriteObjectField(strElse)
 		stream.WriteVal(rule.Else)
 	}
 

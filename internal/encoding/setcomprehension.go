@@ -17,10 +17,10 @@ func (*setComprehensionCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream
 
 	stream.WriteObjectStart()
 
-	stream.WriteObjectField("term")
+	stream.WriteObjectField(strTerm)
 	stream.WriteVal(sc.Term)
 	stream.WriteMore()
-	stream.WriteObjectField("body")
+	stream.WriteObjectField(strBody)
 	stream.WriteVal(sc.Body)
 
 	stream.WriteObjectEnd()

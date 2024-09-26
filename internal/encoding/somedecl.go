@@ -18,12 +18,12 @@ func (*someDeclCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if some.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(some.Location)
 		stream.WriteMore()
 	}
 
-	stream.WriteObjectField("symbols")
+	stream.WriteObjectField(strSymbols)
 
 	writeTermsArray(stream, some.Symbols)
 

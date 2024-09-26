@@ -20,7 +20,7 @@ func (*moduleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	hasWritten := false
 
 	if mod.Package != nil {
-		stream.WriteObjectField("package")
+		stream.WriteObjectField(strPackage)
 
 		if len(mod.Annotations) > 0 {
 			stream.Attachment = mod.Annotations
@@ -37,7 +37,7 @@ func (*moduleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("imports")
+		stream.WriteObjectField(strImports)
 		stream.WriteArrayStart()
 
 		for i, imp := range mod.Imports {
@@ -58,7 +58,7 @@ func (*moduleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("rules")
+		stream.WriteObjectField(strRules)
 		stream.WriteArrayStart()
 
 		for i, rule := range mod.Rules {
@@ -79,7 +79,7 @@ func (*moduleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("comments")
+		stream.WriteObjectField(strComments)
 		stream.WriteArrayStart()
 
 		for i, comment := range mod.Comments {

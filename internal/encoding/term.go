@@ -18,7 +18,7 @@ func (*termCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if term.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(term.Location)
 	}
 
@@ -27,10 +27,10 @@ func (*termCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("type")
+		stream.WriteObjectField(strType)
 		stream.WriteString(ast.TypeName(term.Value))
 		stream.WriteMore()
-		stream.WriteObjectField("value")
+		stream.WriteObjectField(strValue)
 		stream.WriteVal(term.Value)
 	}
 

@@ -18,24 +18,24 @@ func (*everyCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if every.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(every.Location)
 		stream.WriteMore()
 	}
 
-	stream.WriteObjectField("key")
+	stream.WriteObjectField(strKey)
 	stream.WriteVal(every.Key)
 	stream.WriteMore()
 
-	stream.WriteObjectField("value")
+	stream.WriteObjectField(strValue)
 	stream.WriteVal(every.Value)
 	stream.WriteMore()
 
-	stream.WriteObjectField("domain")
+	stream.WriteObjectField(strDomain)
 	stream.WriteVal(every.Domain)
 	stream.WriteMore()
 
-	stream.WriteObjectField("body")
+	stream.WriteObjectField(strBody)
 	stream.WriteVal(every.Body)
 
 	stream.WriteObjectEnd()

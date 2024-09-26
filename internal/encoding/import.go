@@ -18,7 +18,7 @@ func (*importCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteObjectStart()
 
 	if imp.Location != nil {
-		stream.WriteObjectField("location")
+		stream.WriteObjectField(strLocation)
 		stream.WriteVal(imp.Location)
 	}
 
@@ -27,12 +27,12 @@ func (*importCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 			stream.WriteMore()
 		}
 
-		stream.WriteObjectField("path")
+		stream.WriteObjectField(strPath)
 		stream.WriteVal(imp.Path)
 
 		if imp.Alias != "" {
 			stream.WriteMore()
-			stream.WriteObjectField("alias")
+			stream.WriteObjectField(strAlias)
 			stream.WriteVal(imp.Alias)
 		}
 	}
