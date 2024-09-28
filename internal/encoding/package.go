@@ -28,6 +28,10 @@ func (*packageCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 		}
 
 		stream.WriteObjectField(strPath)
+
+		// Omit location of "data" part of path, at it isn't present in code
+		pkg.Path[0].Location = nil
+
 		stream.WriteVal(pkg.Path)
 	}
 

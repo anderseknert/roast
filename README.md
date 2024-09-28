@@ -148,7 +148,6 @@ And in the OPA JSON AST format:
 
 Notice how there's 20 lines of JSON just to represent the body, even though there isn't really one!
 
-
 The optimized Rego AST format discards generated bodies entirely, and the same rule would be represented as:
 
 ```json
@@ -175,6 +174,9 @@ The optimized Rego AST format discards generated bodies entirely, and the same r
 
 Note that this applies equally to empty `else` bodies, which are represented the same way in the original AST, and
 omitted entirely in the optimized format.
+
+Similarly, Roast discards `location` attributes from attributes that don't have an actual location in the source code.
+An example of this is the `data` term of a package path, which is present only in the AST.
 
 ### Removed `annotations` attribute from module
 
