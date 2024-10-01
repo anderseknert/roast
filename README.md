@@ -42,8 +42,13 @@ In the original AST, a `location` is represented as an object:
 And in the optimized format as a string:
 
 ```json
-"5:1:Y29sbGVjdGlvbg=="
+"5:1:5:11"
 ```
+
+The first two numbers are present in both formats, i.e. `row` and `col`. In the optimized format, the third and fourth
+number is the end location, determined by the length of the `text` attribute decoded. In this case `Y29sbGVjdGlvbg==`
+decodes to `collection`, which is 10 characters long. The end location is therefore `5:11`. The text can later be
+retrieved when needed using the original source document as a lookup table of sorts.
 
 While this may come with a small cost for when the `location` is actually needed, it's a huge win for when it's not.
 Having to `split` the result and parse the row and column values when needed occurs some overhead, but only a small
@@ -153,11 +158,11 @@ The optimized Rego AST format discards generated bodies entirely, and the same r
 ```json
 {
   "head": {
-    "location": "5:1:Y29sbGVjdGlvbiBjb250YWlucyAidmFsdWUi",
+    "location": "5:1:5:11",
     "name": "collection",
     "ref": [
       {
-        "location": "5:1:Y29sbGVjdGlvbg==",
+        "location": "5:1:5:11",
         "type": "var",
         "value": "collection"
       }
@@ -165,10 +170,10 @@ The optimized Rego AST format discards generated bodies entirely, and the same r
     "key": {
       "type": "string",
       "value": "value",
-      "location": "5:21:InZhbHVlIg=="
+      "location": "5:21:5:27"
     }
   },
-  "location": "5:1:Y29sbGVjdGlvbg=="
+  "location": "5:1:5:11"
 }
 ```
 

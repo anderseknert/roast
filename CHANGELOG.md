@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0] - 2024-10-01
+
+### Changed
+
+- New location format 
+- Removed `name` attribute from rules in favor of using the rule's `ref` to infer name
+- Updated OPA version from v0.68.0 to v0.69.0
+
 ## [0.3.0] - 2024-09-25
 
 ### Changed
