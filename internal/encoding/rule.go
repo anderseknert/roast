@@ -66,73 +66,7 @@ func (*ruleCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 		}
 
 		stream.WriteObjectField(strHead)
-		stream.WriteObjectStart()
-
-		hasWrittenHead := false
-
-		if rule.Head.Location != nil {
-			stream.WriteObjectField(strLocation)
-			stream.WriteVal(rule.Head.Location)
-
-			hasWrittenHead = true
-		}
-
-		if rule.Head.Reference != nil {
-			if hasWrittenHead {
-				stream.WriteMore()
-			}
-
-			stream.WriteObjectField(strRef)
-			stream.WriteVal(rule.Head.Reference)
-
-			hasWrittenHead = true
-		}
-
-		if len(rule.Head.Args) > 0 {
-			if hasWrittenHead {
-				stream.WriteMore()
-			}
-
-			stream.WriteObjectField(strArgs)
-			writeTermsArray(stream, rule.Head.Args)
-
-			hasWrittenHead = true
-		}
-
-		if rule.Head.Assign {
-			if hasWrittenHead {
-				stream.WriteMore()
-			}
-
-			stream.WriteObjectField(strAssign)
-			stream.WriteBool(rule.Head.Assign)
-
-			hasWrittenHead = true
-		}
-
-		if rule.Head.Key != nil {
-			if hasWrittenHead {
-				stream.WriteMore()
-			}
-
-			stream.WriteObjectField(strKey)
-			stream.WriteVal(rule.Head.Key)
-
-			hasWrittenHead = true
-		}
-
-		if rule.Head.Value != nil {
-			if hasWrittenHead {
-				stream.WriteMore()
-			}
-
-			stream.WriteObjectField(strValue)
-			stream.WriteVal(rule.Head.Value)
-		}
-
-		stream.WriteObjectEnd()
-
-		hasWritten = true
+		stream.WriteVal(rule.Head)
 	}
 
 	if !isBodyGenerated(&rule) {

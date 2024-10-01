@@ -47,7 +47,7 @@ func TestAnnotationsOnPackage(t *testing.T) {
 
 	expected := `{
   "package": {
-    "location": "3:1:Zm9v",
+    "location": "3:1:3:4",
     "path": [
       {
         "type": "var",
@@ -60,7 +60,7 @@ func TestAnnotationsOnPackage(t *testing.T) {
     ],
     "annotations": [
       {
-        "location": "1:1:",
+        "location": "1:1:1:1",
         "scope": "package",
         "title": "foo"
       }
@@ -117,7 +117,7 @@ func TestAnnotationsOnPackageBothPackageAndSubpackagesScope(t *testing.T) {
 
 	expected := `{
   "package": {
-    "location": "6:1:Zm9v",
+    "location": "6:1:6:4",
     "path": [
       {
         "type": "var",
@@ -130,12 +130,12 @@ func TestAnnotationsOnPackageBothPackageAndSubpackagesScope(t *testing.T) {
     ],
     "annotations": [
       {
-        "location": "1:1:",
+        "location": "1:1:1:1",
         "scope": "package",
         "title": "foo"
       },
       {
-        "location": "3:1:",
+        "location": "3:1:3:1",
         "scope": "subpackages",
         "title": "bar"
       }

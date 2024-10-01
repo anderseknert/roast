@@ -1,5 +1,5 @@
 {
-  "location": "1:2:",
+  "location": "1:2:1:2",
   "scope": "document",
   "title": "this is a title",
   "description": "this is a description",
@@ -26,19 +26,19 @@
     {
       "path": [
         {
-          "location": "1:1:aW5wdXQ=",
+          "location": "1:1:1:6",
           "type": "var",
           "value": "input"
         }
       ],
       "schema": [
         {
-          "location": "1:1:c2NoZW1h",
+          "location": "1:1:1:7",
           "type": "var",
           "value": "schema"
         },
         {
-          "location": "1:8:aW5wdXQ=",
+          "location": "1:8:1:13",
           "type": "string",
           "value": "input"
         }
@@ -47,34 +47,34 @@
     {
       "path": [
         {
-          "location": "1:1:ZGF0YQ==",
+          "location": "1:1:1:5",
           "type": "var",
           "value": "data"
         },
         {
-          "location": "1:6:Zm9v",
+          "location": "1:6:1:9",
           "type": "string",
           "value": "foo"
         },
         {
-          "location": "1:10:YmFy",
+          "location": "1:10:1:13",
           "type": "string",
           "value": "bar"
         }
       ],
       "schema": [
         {
-          "location": "1:1:c2NoZW1h",
+          "location": "1:1:1:7",
           "type": "var",
           "value": "schema"
         },
         {
-          "location": "1:8:Zm9v",
+          "location": "1:8:1:11",
           "type": "string",
           "value": "foo"
         },
         {
-          "location": "1:12:YmFy",
+          "location": "1:12:1:15",
           "type": "string",
           "value": "bar"
         }
@@ -83,17 +83,17 @@
     {
       "path": [
         {
-          "location": "1:1:ZGF0YQ==",
+          "location": "1:1:1:5",
           "type": "var",
           "value": "data"
         },
         {
-          "location": "1:6:Zm9v",
+          "location": "1:6:1:9",
           "type": "string",
           "value": "foo"
         },
         {
-          "location": "1:10:YmF6",
+          "location": "1:10:1:13",
           "type": "string",
           "value": "baz"
         }

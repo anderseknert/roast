@@ -8,6 +8,7 @@ func init() {
 	jsoniter.RegisterTypeEncoder("ast.Import", &importCodec{})
 	jsoniter.RegisterTypeEncoder("ast.Annotations", &annotationsCodec{})
 	jsoniter.RegisterTypeEncoder("ast.Rule", &ruleCodec{})
+	jsoniter.RegisterTypeEncoder("ast.Head", &headCodec{})
 	jsoniter.RegisterTypeEncoder("ast.Body", &bodyCodec{})
 	jsoniter.RegisterTypeEncoder("ast.Expr", &exprCodec{})
 	jsoniter.RegisterTypeEncoder("ast.Ref", &refCodec{})
