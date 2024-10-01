@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1] - 2024-10-01
+
+### Changed
+
+- Update actual dependencies used (i.e. `go mod tidy`)
+
+### Changed
+
 ## [0.4.0] - 2024-10-01
 
 ### Changed
