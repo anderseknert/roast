@@ -29,10 +29,14 @@ func (*packageCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 
 		stream.WriteObjectField(strPath)
 
-		// Omit location of "data" part of path, at it isn't present in code
-		pkg.Path[0].Location = nil
+		// Make a copy to avoid data race
+		// https://github.com/StyraInc/regal/issues/1167
+		pathCopy := pkg.Path.Copy()
 
-		stream.WriteVal(pkg.Path)
+		// Omit location of "data" part of path, at it isn't present in code
+		pathCopy[0].Location = nil
+
+		stream.WriteVal(pathCopy)
 	}
 
 	if stream.Attachment != nil {
