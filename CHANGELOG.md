@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.2] - 2024-10-03
+
+### Changed
+
+- Fixed potential data race in package path serialization
+
 ## [0.4.1] - 2024-10-01
 
 ### Changed
